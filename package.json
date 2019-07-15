@@ -1,0 +1,38 @@
+{
+  "name": "@pefish/js-util-desensitize",
+  "version": "0.0.1",
+  "description": "desensitize tool",
+  "keywords": [
+    "common",
+    "js",
+    "tool"
+  ],
+  "homepage": "https://github.com/pefish/js-util-desensitize",
+  "bugs": "https://github.com/pefish/js-util-desensitize/issues",
+  "license": "MIT",
+  "author": "pefish",
+  "types": "./types/*.d.ts",
+  "engines": {
+    "node": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pefish/js-util-desensitize"
+  },
+  "scripts": {
+    "build": "rm -rf lib types lib && tsc",
+    "test": "mocha --timeout 6000 --require ts-node/register src/*.test.ts",
+    "prepublish": "yarn build"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^11.13.7",
+    "assert": "^2.0.0",
+    "electron": "^5.0.2",
+    "ts-node": "^8.1.0",
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.5"
+  }
+}
