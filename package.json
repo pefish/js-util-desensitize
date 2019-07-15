@@ -1,6 +1,6 @@
 {
   "name": "@pefish/js-util-desensitize",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "desensitize tool",
   "keywords": [
     "common",
@@ -15,6 +15,7 @@
   "engines": {
     "node": "*"
   },
+  "main": "./lib/desensitize.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/pefish/js-util-desensitize"
