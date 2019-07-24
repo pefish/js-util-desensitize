@@ -1,6 +1,6 @@
 {
   "name": "@pefish/js-util-desensitize",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "desensitize tool",
   "keywords": [
     "common",
@@ -11,7 +11,7 @@
   "bugs": "https://github.com/pefish/js-util-desensitize/issues",
   "license": "MIT",
   "author": "pefish",
-  "types": "./types/*.d.ts",
+  "types": "./types/desensitize.d.ts",
   "engines": {
     "node": "*"
   },
