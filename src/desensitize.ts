@@ -1,14 +1,19 @@
 
-const DEFAULT_SENSITIVESTR = `pass|token|password|key|pkey`
-
 export default class DesensitizeUtil {
-  static desensitizeObjectToString (data: {}, sensitiveStr: string = DEFAULT_SENSITIVESTR): string {
+
+  static sensitiveStr = `pass|token|password|key|pkey`
+
+  static setSensitiveStr (str: string) {
+    this.sensitiveStr = str
+  }
+
+  static desensitizeObjectToString (data: {}): string {
     const str = JSON.stringify(data)
-    const reg = new RegExp(`("(${sensitiveStr})":").*?(")`, `g`)
+    const reg = new RegExp(`("(${this.sensitiveStr})":").*?(")`, `g`)
     return str.replace(reg, `$1****$3`)
   }
 
-  static desensitizeObject (data: {}, sensitiveStr: string = DEFAULT_SENSITIVESTR): {} {
-    return JSON.parse(DesensitizeUtil.desensitizeObjectToString(data, sensitiveStr))
+  static desensitizeObject (data: {}): {} {
+    return JSON.parse(DesensitizeUtil.desensitizeObjectToString(data))
   }
 }
