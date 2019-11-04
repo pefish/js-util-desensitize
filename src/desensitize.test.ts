@@ -19,12 +19,13 @@ describe('desensitize', () => {
           ab: `dhjds`,
           ty: {
             pass: `haha`
-          }
+          },
+          token: `252`,
         },
         token: `token`
       })
       // global.logger.info(result);
-      assert.strictEqual(result, `{"haha":{"ab":"dhjds","ty":{"pass":"****"}},"token":"****"}`)
+      assert.strictEqual(result, `{"haha":{"ab":"dhjds","ty":{"pass":"****"},"token":"****"},"token":"****"}`)
 
       const result1 = DesensitizeUtil.desensitizeObjectToString({
         haha: {

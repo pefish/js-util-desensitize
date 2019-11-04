@@ -1,19 +1,27 @@
 
 export default class DesensitizeUtil {
 
-  static sensitiveStr = `pass|token|password|key|pkey`
+  static sensitiveStrs: string[] = [
+    `.*?pass.*?`,
+    `.*?token.*?`,
+    `.*?key.*?`,
+    `.*?secret.*?`,
+  ]
 
-  static setSensitiveStr (str: string) {
-    this.sensitiveStr = str
+  static setSensitiveStr(str: string[]) {
+    this.sensitiveStrs = str
   }
 
-  static desensitizeObjectToString (data: {}): string {
-    const str = JSON.stringify(data)
-    const reg = new RegExp(`("(${this.sensitiveStr})":").*?(")`, `g`)
-    return str.replace(reg, `$1****$3`)
+  static desensitizeObjectToString(data: {}): string {
+    let str = JSON.stringify(data)
+    for (let sensitiveStr of this.sensitiveStrs) {
+      const reg = new RegExp(`("${sensitiveStr}":").*?(")`, `g`)
+      str = str.replace(reg, `$1****$2`)
+    }
+    return str
   }
 
-  static desensitizeObject (data: {}): {} {
+  static desensitizeObject(data: {}): {} {
     return JSON.parse(DesensitizeUtil.desensitizeObjectToString(data))
   }
 }
